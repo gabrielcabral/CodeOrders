@@ -1,4 +1,4 @@
-    <?php
+<?php
 namespace CodeOrders\V1\Rest\Users;
 
 use ZF\ApiProblem\ApiProblem;
