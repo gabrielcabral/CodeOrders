@@ -73,4 +73,20 @@ class UsersEntityTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($values, $this->class->$get());
     }
+
+    /**
+     * Check influential interface
+     *
+     * @dataProvider testDataProviderAttributes
+     * @param $attributes
+     * @param $values
+     */
+    public function testCheckInfluentialInterface($attributes, $values)
+    {
+        $set = 'set' . ucfirst($attributes);
+
+        $result  = $this->class->$set($values);
+
+        $this->assertInstanceOf('CodeOrders\V1\Rest\Users\UsersEntity', $result);
+    }
 }

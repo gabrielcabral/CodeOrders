@@ -1,18 +1,40 @@
 <?php
 namespace CodeOrders\V1\Rest\Users;
 
+/**
+ * Class UsersEntity
+ * @package CodeOrders\V1\Rest\Users
+ */
 class UsersEntity
 {
+    /**
+     * @var integer
+     */
     protected $id;
 
+    /**
+     * @var string
+     */
     protected $username;
 
+    /**
+     * @var string
+     */
     protected $password;
 
+    /**
+     * @var string
+     */
     protected $firstName;
 
+    /**
+     * @var string
+     */
     protected $lastName;
 
+    /**
+     * @var
+     */
     protected $role;
 
     /**
@@ -146,6 +168,4 @@ class UsersEntity
         $this->role = $role;
         return $this;
     }
-
-
 }
