@@ -1,6 +1,8 @@
 ZF2-Apigility
 =======================
 
+:book: Project: Portal Code Education - treading path with frameworks | ZF2-Apigility Module
+
 Estudo sobre o Framework ZF2-Apigility
 --------------------------------------
 
@@ -15,7 +17,7 @@ Descrição do projeto, para concluir
 
 **Etapas**
 
->1º Etapa. *Instalando e versionando*
+>1º Etapa. *CRUD e Serviços*
 
 **Sobre o projeto**
 
