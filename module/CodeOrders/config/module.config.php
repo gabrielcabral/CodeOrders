@@ -109,11 +109,14 @@ return array(
                     0 => array(
                         'name' => 'Zend\\Validator\\StringLength',
                         'options' => array(
-                            'min' => 1,
                             'max' => '45',
+                            'min' => '3',
                         ),
                     ),
                 ),
+                'description' => 'Nome do tipo de pagamento 
+Name of playment type',
+                'error_message' => 'The name field is invalid',
             ),
         ),
     ),
