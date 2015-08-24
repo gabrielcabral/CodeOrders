@@ -1,11 +1,25 @@
 <?php
 namespace CodeOrders\V1\Rest\Users;
 
+use CodeOrders\V1\Rest\Users\Repository\UsersRepository;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
 class UsersResource extends AbstractResourceListener
 {
+    /**
+     * @var UsersRepository
+     */
+    private $usersRepository;
+
+    /**
+     * @param UsersRepository $usersRepository
+     */
+    public function __construct(UsersRepository $usersRepository)
+    {
+        $this->usersRepository = $usersRepository;
+    }
+
     /**
      * Create a resource
      *
@@ -47,7 +61,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        return $this->usersRepository->find($id);
     }
 
     /**
@@ -58,7 +72,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function fetchAll($params = array())
     {
-        return new ApiProblem(405, 'The GET method has not been defined for collections');
+        return $this->usersRepository->findAll();
     }
 
     /**

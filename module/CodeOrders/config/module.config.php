@@ -67,7 +67,7 @@ return array(
                 1 => 'POST',
             ),
             'collection_query_whitelist' => array(),
-            'page_size' => 25,
+            'page_size' => '10',
             'page_size_param' => null,
             'entity_class' => 'CodeOrders\\V1\\Rest\\Users\\UsersEntity',
             'collection_class' => 'CodeOrders\\V1\\Rest\\Users\\UsersCollection',
@@ -120,7 +120,7 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'code-orders.rest.users',
                 'route_identifier_name' => 'users_id',
-                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ClassMethods',
             ),
             'CodeOrders\\V1\\Rest\\Users\\UsersCollection' => array(
                 'entity_identifier_name' => 'id',
@@ -177,6 +177,7 @@ Name of playment type',
     'service_manager' => array(
         'factories' => array(
             'CodeOrders\\V1\\Rest\\Users\\UsersResource' => 'CodeOrders\\V1\\Rest\\Users\\UsersResourceFactory',
+            'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepositoryFactory',
         ),
     ),
 );
