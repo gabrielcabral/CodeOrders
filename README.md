@@ -19,6 +19,14 @@ Descrição do projeto, para concluir
 
 >1º Etapa. *CRUD e Serviços*
 
+**Uso**
+
+> git clone https://github.com/candidosouza/CodeOrders.git
+
+> cd CodeOrders
+
+> php -S 127.0.0.1:8080 -t public public/index.php
+
 **Sobre o projeto**
 
 *Este projeto foi desenvolvido para didática, não serve como um projeto real.*
