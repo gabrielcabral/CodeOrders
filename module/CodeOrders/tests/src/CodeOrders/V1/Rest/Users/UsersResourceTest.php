@@ -88,6 +88,4 @@ class UsersResourceTest extends \PHPUnit_Framework_TestCase
         $this->class->update('1', 'data');
         $this->assertTrue(method_exists($this->class, "update"), "Method not Found");
     }
-
-
 }

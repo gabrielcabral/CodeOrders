@@ -28,7 +28,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        return new ApiProblem(405, 'The POST method has not been defined');
+        return $this->usersRepository->save($data);
     }
 
     /**
@@ -39,7 +39,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        return $this->usersRepository->delete($id);
     }
 
     /**
@@ -107,6 +107,6 @@ class UsersResource extends AbstractResourceListener
      */
     public function update($id, $data)
     {
-        return new ApiProblem(405, 'The PUT method has not been defined for individual resources');
+        return $this->save($id, $data);
     }
 }

@@ -3,8 +3,10 @@
 namespace CodeOrders\V1\Rest\Users\Repository;
 
 use CodeOrders\V1\Rest\Users\UsersCollection;
+
 use Zend\Db\TableGateway\TableGatewayInterface;
 use Zend\Paginator\Adapter\DbTableGateway;
+use ZF\ApiProblem\ApiProblem;
 
 /**
  * Class UsersRepository
@@ -50,5 +52,21 @@ class UsersRepository
         $resultSet = $this->tableGateway->select(['id' => (int)$id]);
 
         return $resultSet->current();
+    }
+
+    //erro
+    public function insert(array $data)
+    {
+
+    }
+
+    // errado
+    public function update($id, $data)
+    {
+    }
+
+    // correto
+    public function delete($id)
+    {
     }
 }
