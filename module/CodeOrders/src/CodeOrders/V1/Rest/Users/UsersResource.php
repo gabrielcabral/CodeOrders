@@ -28,7 +28,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        return $this->usersRepository->save($data);
+        return $this->usersRepository->insert($data);
     }
 
     /**
@@ -107,6 +107,6 @@ class UsersResource extends AbstractResourceListener
      */
     public function update($id, $data)
     {
-        return $this->save($id, $data);
+        return $this->usersRepository->update($id, $data);
     }
 }

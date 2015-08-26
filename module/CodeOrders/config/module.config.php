@@ -57,14 +57,15 @@ return array(
             'route_identifier_name' => 'users_id',
             'collection_name' => 'users',
             'entity_http_methods' => array(
-                0 => 'GET',
-                1 => 'PATCH',
+                0 => 'PATCH',
+                1 => 'DELETE',
                 2 => 'PUT',
-                3 => 'DELETE',
+                3 => 'GET',
             ),
             'collection_http_methods' => array(
                 0 => 'GET',
                 1 => 'POST',
+                2 => 'PUT',
             ),
             'collection_query_whitelist' => array(),
             'page_size' => '10',
@@ -360,6 +361,26 @@ Name of playment type',
         'factories' => array(
             'CodeOrders\\V1\\Rest\\Users\\UsersResource' => 'CodeOrders\\V1\\Rest\\Users\\UsersResourceFactory',
             'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepositoryFactory',
+        ),
+    ),
+    'zf-mvc-auth' => array(
+        'authorization' => array(
+            'CodeOrders\\V1\\Rest\\Users\\Controller' => array(
+                'collection' => array(
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+                'entity' => array(
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+            ),
         ),
     ),
 );

@@ -1,6 +1,8 @@
 <?php
 namespace CodeOrders\V1\Rest\Users;
 
+use Zend\Stdlib\Hydrator;
+
 /**
  * Class UsersEntity
  * @package CodeOrders\V1\Rest\Users
@@ -36,6 +38,11 @@ class UsersEntity
      * @var
      */
     protected $role;
+
+    public function __construct(array $options = [])
+    {
+        (new Hydrator\ClassMethods())->hydrate($options, $this);
+    }
 
     /**
      * Get id
@@ -167,5 +174,13 @@ class UsersEntity
     {
         $this->role = $role;
         return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray()
+    {
+        return (new Hydrator\ClassMethods())->extract($this);
     }
 }
