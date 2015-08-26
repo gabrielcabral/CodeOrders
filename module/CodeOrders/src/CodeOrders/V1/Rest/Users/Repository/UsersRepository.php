@@ -4,7 +4,6 @@ namespace CodeOrders\V1\Rest\Users\Repository;
 
 use CodeOrders\V1\Rest\Users\UsersCollection;
 
-use CodeOrders\V1\Rest\Users\UsersEntity;
 use Zend\Db\TableGateway\TableGatewayInterface;
 use Zend\Paginator\Adapter\DbTableGateway;
 use ZF\ApiProblem\ApiProblem;
@@ -77,55 +76,22 @@ class UsersRepository
 
     }
 
-    // erro
-    public function save($data)
-    {
-        $id = $data['id'];
-
-        if($id == 0) {
-            $result = $this->tableGateway->insert($data);
-
-            if (!$result)
-                return new ApiProblem(500, 'Erro ao inserir registro | Error insert registry');
-
-            $insert = $this->tableGateway->lastInsertValue;
-//        $insert = $this->tableGateway->getLastInsetValue();
-
-            return $insert;
-        }
-
-        if ($this->find($id)) {
-            $result = $this->tableGateway->update($data, ['id' => $id]);
-
-            if(!$result)
-                return new ApiProblem(500, 'Erro ao atualizar registro | Error update registry');
-
-            $update = $this->tableGateway->lastInsertValue;
-
-            return $update;
-        }
-
-        return new ApiProblem(404, 'Registro não encontrado | Registry not found');
-
-
-    }
-
     // errado
     public function update($id, $data)
     {
-        $result = $this->find($id);
-        if (!$result)
-            return new ApiProblem(404, 'Registro não encontrado | Registry not found');
+        $this->tableGateway->update($data, ['id' => $id]);
 
-        $update = $this->tableGateway->update($data, ['id' => $id]);
-
-        if(!$update)
-            return new ApiProblem(500, 'Erro ao atualizar registro | Error update registry');
+        $data['id'] = $this->tableGateway->getLastInsertValue();
 
         return $data;
     }
 
-    // correto
+    /**
+     * Delete user
+     *
+     * @param $id
+     * @return bool|ApiProblem
+     */
     public function delete($id)
     {
         $result = $this->find($id);
