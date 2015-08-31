@@ -28,8 +28,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        //return $this->usersRepository->insert($data);
-        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
+        return $this->usersRepository->insert($data);
     }
 
     /**

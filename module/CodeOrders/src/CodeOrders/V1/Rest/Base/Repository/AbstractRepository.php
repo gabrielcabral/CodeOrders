@@ -57,4 +57,24 @@ class AbstractRepository
 
         return $resultSet->current();
     }
+
+    /**
+     * Insert data user
+     *
+     * @param $data
+     * @return array|ApiProblem
+     */
+    public function insert($data)
+    {
+        $data  = (array) $data;
+
+        $result = $this->tableGateway->insert($data);
+
+        if(!$result)
+            return new ApiProblem(500, 'Erro ao inserir registro | Error insert registry');
+
+        $data['id'] = $this->tableGateway->getLastInsertValue();
+
+        return $data;
+    }
 }
