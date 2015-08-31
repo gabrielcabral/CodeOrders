@@ -3,11 +3,7 @@
 namespace CodeOrders\V1\Rest\Users\Repository;
 
 use CodeOrders\V1\Rest\Base\Repository\AbstractRepository;
-use CodeOrders\V1\Rest\Users\UsersCollection;
-
 use Zend\Db\TableGateway\TableGatewayInterface;
-use Zend\Paginator\Adapter\DbTableGateway;
-use ZF\ApiProblem\ApiProblem;
 
 /**
  * Class UsersRepository

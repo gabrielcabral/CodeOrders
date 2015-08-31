@@ -5,6 +5,12 @@ namespace CodeOrders\V1\Rest\Base\Repository;
 use Zend\Db\TableGateway\TableGatewayInterface;
 use Zend\Paginator\Adapter\DbTableGateway;
 
+use ZF\ApiProblem\ApiProblem;
+
+/**
+ * Class AbstractRepository
+ * @package CodeOrders\V1\Rest\Base\Repository
+ */
 class AbstractRepository
 {
     /**
@@ -12,6 +18,9 @@ class AbstractRepository
      */
     protected $tableGateway;
 
+    /**
+     * @var Object
+     */
     protected $collection;
 
     /**
@@ -24,9 +33,15 @@ class AbstractRepository
         $this->tableGateway = $tableGateway;
     }
 
-
+    /**
+     * Find all
+     *
+     * @return mixed
+     */
     public function findAll()
     {
-        return $this->tableGateway->select();
+        $paginatorAdapter = new DbTableGateway($this->tableGateway);
+
+        return new $this->collection($paginatorAdapter);
     }
 }
