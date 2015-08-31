@@ -9,6 +9,10 @@ use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 use Zend\Stdlib\Hydrator\ClassMethods;
 
+/**
+ * Class AbstractRepositoryFactory
+ * @package CodeOrders\V1\Rest\Base\Repository
+ */
 class AbstractRepositoryFactory implements FactoryInterface
 {
 

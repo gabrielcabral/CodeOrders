@@ -5,6 +5,10 @@ use CodeOrders\V1\Rest\Users\Repository\UsersRepository;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
+/**
+ * Class UsersResource
+ * @package CodeOrders\V1\Rest\Users
+ */
 class UsersResource extends AbstractResourceListener
 {
     /**

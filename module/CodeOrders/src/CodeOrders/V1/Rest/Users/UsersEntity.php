@@ -39,6 +39,11 @@ class UsersEntity
      */
     protected $role;
 
+    /**
+     * Construct
+     *
+     * @param array $options
+     */
     public function __construct(array $options = [])
     {
         (new Hydrator\ClassMethods())->hydrate($options, $this);
@@ -177,6 +182,8 @@ class UsersEntity
     }
 
     /**
+     * ToArray
+     *
      * @return array
      */
     public function toArray()
