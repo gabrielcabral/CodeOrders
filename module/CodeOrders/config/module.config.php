@@ -359,7 +359,6 @@ Name of playment type',
     'service_manager' => array(
         'factories' => array(
             'CodeOrders\\V1\\Rest\\Users\\UsersResource' => 'CodeOrders\\V1\\Rest\\Users\\UsersResourceFactory',
-            //'CodeOrders\\V1\\Rest\\Base\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Base\\Repository\\UsersRepositoryFactory',
             'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepositoryFactory',
         ),
     ),

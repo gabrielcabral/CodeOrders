@@ -28,7 +28,8 @@ class UsersResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        return $this->usersRepository->insert($data);
+        //return $this->usersRepository->insert($data);
+        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 
     /**
@@ -39,7 +40,8 @@ class UsersResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        return $this->usersRepository->delete($id);
+        //return $this->usersRepository->delete($id);
+        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 
     /**
@@ -61,7 +63,8 @@ class UsersResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        return $this->usersRepository->find($id);
+        //return $this->usersRepository->find($id);
+        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 
     /**
@@ -84,7 +87,8 @@ class UsersResource extends AbstractResourceListener
      */
     public function patch($id, $data)
     {
-        return $this->usersRepository->update($id, $data);
+        //return $this->usersRepository->update($id, $data);
+        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 
     /**
@@ -107,6 +111,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function update($id, $data)
     {
-        return $this->usersRepository->update($id, $data);
+        //return $this->usersRepository->update($id, $data);
+        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
     }
 }
