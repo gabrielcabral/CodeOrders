@@ -53,9 +53,12 @@ class AbstractRepository
      */
     public function find($id)
     {
-        $resultSet = $this->tableGateway->select(['id' => (int)$id]);
+        $result = $this->tableGateway->select(['id' => (int)$id]);
 
-        return $resultSet->current();
+        if (!$result)
+            return new ApiProblem(404, 'Registro não encontrado | Registry not found');
+
+        return $result->current();
     }
 
     /**
@@ -76,5 +79,52 @@ class AbstractRepository
         $data['id'] = $this->tableGateway->getLastInsertValue();
 
         return $data;
+    }
+
+    /**
+     * Update
+     *
+     * @param $id
+     * @param $data
+     * @return array|ApiProblem
+     */
+    public function update($id, $data)
+    {
+        $result = $this->find($id);
+
+        $data  = (array) $data;
+
+        if (!$result)
+            return new ApiProblem(404, 'Registro não encontrado | Registry not found');
+
+        $result = $this->tableGateway->update($data, ['id' => $id]);
+
+        if(!$result)
+            return new ApiProblem(500, 'Erro ao alterar registro | Error update registry');
+
+        $data['id'] = $this->tableGateway->getLastInsertValue();
+
+        return $data;
+    }
+
+    /**
+     * Delete user
+     *
+     * @param $id
+     * @return bool|ApiProblem
+     */
+    public function delete($id)
+    {
+        $result = $this->find($id);
+
+        if (!$result)
+            return new ApiProblem(404, 'Registro não encontrado | Registry not found');
+
+        $delete = $this->tableGateway->delete(['id' => $id]);
+
+        if(!$delete)
+            return new ApiProblem(500, 'Erro ao deletar registro | Error delete registry');
+
+        return true;
     }
 }
