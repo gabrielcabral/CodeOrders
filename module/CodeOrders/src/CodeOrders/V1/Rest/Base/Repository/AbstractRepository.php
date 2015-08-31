@@ -44,4 +44,17 @@ class AbstractRepository
 
         return new $this->collection($paginatorAdapter);
     }
+
+    /**
+     * Find
+     *
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        $resultSet = $this->tableGateway->select(['id' => (int)$id]);
+
+        return $resultSet->current();
+    }
 }

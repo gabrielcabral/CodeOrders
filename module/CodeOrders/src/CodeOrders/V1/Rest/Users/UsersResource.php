@@ -63,8 +63,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        //return $this->usersRepository->find($id);
-        return new ApiProblem(405, 'The DELETE method has not been defined for collections');
+        return $this->usersRepository->find($id);
     }
 
     /**
