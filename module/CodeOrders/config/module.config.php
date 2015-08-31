@@ -65,7 +65,6 @@ return array(
             'collection_http_methods' => array(
                 0 => 'GET',
                 1 => 'POST',
-                2 => 'PUT',
             ),
             'collection_query_whitelist' => array(),
             'page_size' => '10',
@@ -360,6 +359,7 @@ Name of playment type',
     'service_manager' => array(
         'factories' => array(
             'CodeOrders\\V1\\Rest\\Users\\UsersResource' => 'CodeOrders\\V1\\Rest\\Users\\UsersResourceFactory',
+            //'CodeOrders\\V1\\Rest\\Base\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Base\\Repository\\UsersRepositoryFactory',
             'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepositoryFactory',
         ),
     ),

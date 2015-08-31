@@ -64,22 +64,30 @@ class UsersRepository
     {
         $data  = (array) $data;
 
-        $insert = $this->tableGateway->insert($data);
+        $result = $this->tableGateway->insert($data);
 
-        if(!$insert)
+        if(!$result)
             return new ApiProblem(500, 'Erro ao inserir registro | Error insert registry');
 
         $data['id'] = $this->tableGateway->getLastInsertValue();
 
         return $data;
-
-
     }
 
-    // errado
+
     public function update($id, $data)
     {
-        $this->tableGateway->update($data, ['id' => $id]);
+        $result = $this->find($id);
+
+        if (!$result)
+            return new ApiProblem(404, 'Registro não encontrado | Registry not found');
+
+        $data  = (array) $data;
+
+        $result = $this->tableGateway->update($data, ['id' => (int)$id]);
+
+        if(!$result)
+            return new ApiProblem(500, 'Erro ao alterar registro | Error update registry');
 
         $data['id'] = $this->tableGateway->getLastInsertValue();
 
@@ -98,7 +106,7 @@ class UsersRepository
         if (!$result)
             return new ApiProblem(404, 'Registro não encontrado | Registry not found');
 
-        $delete = $this->tableGateway->delete(['id' => $id]);
+        $delete = $this->tableGateway->delete(['id' => (int)$id]);
 
         if(!$delete)
             return new ApiProblem(500, 'Erro ao deletar registro | Error delete registry');

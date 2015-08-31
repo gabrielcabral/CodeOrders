@@ -84,7 +84,7 @@ class UsersResource extends AbstractResourceListener
      */
     public function patch($id, $data)
     {
-        return new ApiProblem(405, 'The PATCH method has not been defined for individual resources');
+        return $this->usersRepository->update($id, $data);
     }
 
     /**
