@@ -15,8 +15,8 @@ class ProductsRepositoryFactory extends AbstractRepositoryFactory
      */
     public function __construct()
     {
-        $this->entity = 'CodeOrders\\V1\\Rest\Products\\ProductsEntity';
-        $this->table = 'oauth_users';
+        $this->entity = 'CodeOrders\\V1\\Rest\\Products\\ProductsEntity';
+        $this->table = 'products';
         $this->dbAdapter = 'DbAdapter';
         $this->repository = 'CodeOrders\\V1\\Rest\\Products\\Repository\\ProductsRepository';
     }

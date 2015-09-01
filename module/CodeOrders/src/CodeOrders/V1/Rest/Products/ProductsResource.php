@@ -1,11 +1,24 @@
 <?php
 namespace CodeOrders\V1\Rest\Products;
 
+use CodeOrders\V1\Rest\Products\Repository\ProductsRepository;
 use ZF\ApiProblem\ApiProblem;
 use ZF\Rest\AbstractResourceListener;
 
 class ProductsResource extends AbstractResourceListener
 {
+    private $productsRepository;
+
+    /**
+     * ProductsResource constructor.
+     * @param $productsRepository
+     */
+    public function __construct(ProductsRepository $productsRepository)
+    {
+        $this->productsRepository = $productsRepository;
+    }
+
+
     /**
      * Create a resource
      *
@@ -14,7 +27,7 @@ class ProductsResource extends AbstractResourceListener
      */
     public function create($data)
     {
-        return new ApiProblem(405, 'The POST method has not been defined');
+        return $this->productsRepository->insert($data);
     }
 
     /**
@@ -25,7 +38,7 @@ class ProductsResource extends AbstractResourceListener
      */
     public function delete($id)
     {
-        return new ApiProblem(405, 'The DELETE method has not been defined for individual resources');
+        return $this->productsRepository->delete($id);
     }
 
     /**
@@ -47,7 +60,7 @@ class ProductsResource extends AbstractResourceListener
      */
     public function fetch($id)
     {
-        return new ApiProblem(405, 'The GET method has not been defined for individual resources');
+        return $this->productsRepository->find($id);
     }
 
     /**
@@ -58,7 +71,7 @@ class ProductsResource extends AbstractResourceListener
      */
     public function fetchAll($params = array())
     {
-        return new ApiProblem(405, 'The GET method has not been defined for collections');
+        return $this->productsRepository->findAll();
     }
 
     /**
@@ -70,7 +83,7 @@ class ProductsResource extends AbstractResourceListener
      */
     public function patch($id, $data)
     {
-        return new ApiProblem(405, 'The PATCH method has not been defined for individual resources');
+        return $this->productsRepository->update($id, $data);
     }
 
     /**
@@ -93,6 +106,6 @@ class ProductsResource extends AbstractResourceListener
      */
     public function update($id, $data)
     {
-        return new ApiProblem(405, 'The PUT method has not been defined for individual resources');
+        return $this->productsRepository->update($id, $data);
     }
 }

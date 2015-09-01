@@ -228,7 +228,7 @@ return array(
                 'entity_identifier_name' => 'id',
                 'route_name' => 'code-orders.rest.products',
                 'route_identifier_name' => 'products_id',
-                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ClassMethods',
             ),
             'CodeOrders\\V1\\Rest\\Products\\ProductsCollection' => array(
                 'entity_identifier_name' => 'id',
@@ -637,27 +637,10 @@ Name of playment type',
             ),
             2 => array(
                 'required' => true,
-                'validators' => array(
-                    0 => array(
-                        'name' => 'Zend\\Validator\\StringLength',
-                        'options' => array(
-                            'max' => '60',
-                            'min' => '3',
-                        ),
-                    ),
-                ),
-                'filters' => array(
-                    0 => array(
-                        'name' => 'Zend\\Filter\\StripTags',
-                        'options' => array(),
-                    ),
-                    1 => array(
-                        'name' => 'Zend\\Filter\\StringTrim',
-                        'options' => array(),
-                    ),
-                ),
+                'validators' => array(),
+                'filters' => array(),
                 'name' => 'price',
-                'description' => 'Price of products',
+                'description' => 'Price of product',
                 'error_message' => 'The price field is invalid',
             ),
         ),

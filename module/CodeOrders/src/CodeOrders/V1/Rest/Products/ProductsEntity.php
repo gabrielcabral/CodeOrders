@@ -21,7 +21,7 @@ class ProductsEntity
     protected $description;
 
     /**
-     * @var
+     * @var decimal
      */
     protected $price;
 
