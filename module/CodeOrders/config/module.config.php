@@ -29,6 +29,15 @@ return array(
                     ),
                 ),
             ),
+            'code-orders.rest.products' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/products[/:products_id]',
+                    'defaults' => array(
+                        'controller' => 'CodeOrders\\V1\\Rest\\Products\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
@@ -36,6 +45,7 @@ return array(
             0 => 'code-orders.rest.ptypes',
             1 => 'code-orders.rest.users',
             2 => 'code-orders.rest.clients',
+            3 => 'code-orders.rest.products',
         ),
     ),
     'zf-rest' => array(
@@ -55,7 +65,7 @@ return array(
                 1 => 'POST',
             ),
             'collection_query_whitelist' => array(),
-            'page_size' => 25,
+            'page_size' => '10',
             'page_size_param' => null,
             'entity_class' => 'CodeOrders\\V1\\Rest\\Ptypes\\PtypesEntity',
             'collection_class' => 'CodeOrders\\V1\\Rest\\Ptypes\\PtypesCollection',
@@ -99,11 +109,33 @@ return array(
                 1 => 'POST',
             ),
             'collection_query_whitelist' => array(),
-            'page_size' => 25,
+            'page_size' => '10',
             'page_size_param' => null,
             'entity_class' => 'CodeOrders\\V1\\Rest\\Clients\\ClientsEntity',
             'collection_class' => 'CodeOrders\\V1\\Rest\\Clients\\ClientsCollection',
             'service_name' => 'clients',
+        ),
+        'CodeOrders\\V1\\Rest\\Products\\Controller' => array(
+            'listener' => 'CodeOrders\\V1\\Rest\\Products\\ProductsResource',
+            'route_name' => 'code-orders.rest.products',
+            'route_identifier_name' => 'products_id',
+            'collection_name' => 'products',
+            'entity_http_methods' => array(
+                0 => 'GET',
+                1 => 'PATCH',
+                2 => 'PUT',
+                3 => 'DELETE',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+                1 => 'POST',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => '10',
+            'page_size_param' => null,
+            'entity_class' => 'CodeOrders\\V1\\Rest\\Products\\ProductsEntity',
+            'collection_class' => 'CodeOrders\\V1\\Rest\\Products\\ProductsCollection',
+            'service_name' => 'products',
         ),
     ),
     'zf-content-negotiation' => array(
@@ -111,6 +143,7 @@ return array(
             'CodeOrders\\V1\\Rest\\Ptypes\\Controller' => 'HalJson',
             'CodeOrders\\V1\\Rest\\Users\\Controller' => 'HalJson',
             'CodeOrders\\V1\\Rest\\Clients\\Controller' => 'HalJson',
+            'CodeOrders\\V1\\Rest\\Products\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
             'CodeOrders\\V1\\Rest\\Ptypes\\Controller' => array(
@@ -128,6 +161,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'CodeOrders\\V1\\Rest\\Products\\Controller' => array(
+                0 => 'application/vnd.code-orders.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content_type_whitelist' => array(
             'CodeOrders\\V1\\Rest\\Ptypes\\Controller' => array(
@@ -139,6 +177,10 @@ return array(
                 1 => 'application/json',
             ),
             'CodeOrders\\V1\\Rest\\Clients\\Controller' => array(
+                0 => 'application/vnd.code-orders.v1+json',
+                1 => 'application/json',
+            ),
+            'CodeOrders\\V1\\Rest\\Products\\Controller' => array(
                 0 => 'application/vnd.code-orders.v1+json',
                 1 => 'application/json',
             ),
@@ -182,6 +224,18 @@ return array(
                 'route_identifier_name' => 'clients_id',
                 'is_collection' => true,
             ),
+            'CodeOrders\\V1\\Rest\\Products\\ProductsEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'code-orders.rest.products',
+                'route_identifier_name' => 'products_id',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
+            ),
+            'CodeOrders\\V1\\Rest\\Products\\ProductsCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'code-orders.rest.products',
+                'route_identifier_name' => 'products_id',
+                'is_collection' => true,
+            ),
         ),
     ),
     'zf-apigility' => array(
@@ -192,6 +246,7 @@ return array(
                 'hydrator_name' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
                 'controller_service_name' => 'CodeOrders\\V1\\Rest\\Ptypes\\Controller',
                 'entity_identifier_name' => 'id',
+                'table_service' => 'CodeOrders\\V1\\Rest\\Ptypes\\PtypesResource\\Table',
             ),
             'CodeOrders\\V1\\Rest\\Clients\\ClientsResource' => array(
                 'adapter_name' => 'DbAdapter',
@@ -199,6 +254,7 @@ return array(
                 'hydrator_name' => 'Zend\\Stdlib\\Hydrator\\ArraySerializable',
                 'controller_service_name' => 'CodeOrders\\V1\\Rest\\Clients\\Controller',
                 'entity_identifier_name' => 'id',
+                'table_service' => 'CodeOrders\\V1\\Rest\\Clients\\ClientsResource\\Table',
             ),
         ),
     ),
@@ -208,6 +264,9 @@ return array(
         ),
         'CodeOrders\\V1\\Rest\\Clients\\Controller' => array(
             'input_filter' => 'CodeOrders\\V1\\Rest\\Clients\\Validator',
+        ),
+        'CodeOrders\\V1\\Rest\\Users\\Controller' => array(
+            'input_filter' => 'CodeOrders\\V1\\Rest\\Users\\Validator',
         ),
     ),
     'input_filter_specs' => array(
@@ -258,6 +317,8 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'Name of clients',
+                'error_message' => 'The name field is invalid',
             ),
             1 => array(
                 'name' => 'document',
@@ -374,7 +435,15 @@ Name of playment type',
                             'max' => '100',
                         ),
                     ),
+                    1 => array(
+                        'name' => 'Zend\\Validator\\EmailAddress',
+                        'options' => array(
+                            'message' => 'Email invalid',
+                        ),
+                    ),
                 ),
+                'description' => 'Email of clients',
+                'error_message' => 'the email field is invalid',
             ),
             8 => array(
                 'name' => 'phone',
@@ -419,11 +488,89 @@ Name of playment type',
                 ),
             ),
         ),
+        'CodeOrders\\V1\\Rest\\Users\\Validator' => array(
+            0 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'max' => '60',
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                    1 => array(
+                        'name' => 'Zend\\Filter\\StripTags',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'username',
+                'description' => 'Username of users',
+                'error_message' => 'The field is invalid',
+            ),
+            1 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'max' => '60',
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StripTags',
+                        'options' => array(),
+                    ),
+                    1 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'first_name',
+                'description' => 'Fisrt name of users',
+                'error_message' => 'The first name field is invalid',
+            ),
+            2 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'max' => '60',
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StripTags',
+                        'options' => array(),
+                    ),
+                    1 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'last_name',
+                'description' => 'Last name of users',
+                'error_message' => 'The last name field is invalid',
+            ),
+        ),
     ),
     'service_manager' => array(
         'factories' => array(
             'CodeOrders\\V1\\Rest\\Users\\UsersResource' => 'CodeOrders\\V1\\Rest\\Users\\UsersResourceFactory',
             'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepositoryFactory',
+            'CodeOrders\\V1\\Rest\\Products\\ProductsResource' => 'CodeOrders\\V1\\Rest\\Products\\ProductsResourceFactory',
         ),
     ),
     'zf-mvc-auth' => array(
