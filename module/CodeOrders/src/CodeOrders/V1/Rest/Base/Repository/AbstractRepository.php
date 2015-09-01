@@ -11,7 +11,7 @@ use ZF\ApiProblem\ApiProblem;
  * Class AbstractRepository
  * @package CodeOrders\V1\Rest\Base\Repository
  */
-class AbstractRepository
+abstract class AbstractRepository
 {
     /**
      * @var TableGatewayInterface

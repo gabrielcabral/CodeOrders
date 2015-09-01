@@ -13,7 +13,7 @@ use Zend\Stdlib\Hydrator\ClassMethods;
  * Class AbstractRepositoryFactory
  * @package CodeOrders\V1\Rest\Base\Repository
  */
-class AbstractRepositoryFactory implements FactoryInterface
+abstract class AbstractRepositoryFactory implements FactoryInterface
 {
 
     protected $entity;
