@@ -667,6 +667,7 @@ Name of playment type',
             'CodeOrders\\V1\\Rest\\Users\\UsersResource' => 'CodeOrders\\V1\\Rest\\Users\\UsersResourceFactory',
             'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepository' => 'CodeOrders\\V1\\Rest\\Users\\Repository\\UsersRepositoryFactory',
             'CodeOrders\\V1\\Rest\\Products\\ProductsResource' => 'CodeOrders\\V1\\Rest\\Products\\ProductsResourceFactory',
+            'CodeOrders\\V1\\Rest\\Products\\Repository\\ProductsRepository' => 'CodeOrders\\V1\\Rest\\Products\\Repository\\ProductsRepositoryFactory',
         ),
     ),
     'zf-mvc-auth' => array(
