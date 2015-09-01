@@ -9,7 +9,7 @@ use Zend\Db\TableGateway\TableGatewayInterface;
  * Class ProductsRepositoty
  * @package CodeOrders\V1\Rest\Products\Repository
  */
-class ProductsRepositoty extends AbstractRepository
+class ProductsRepository extends AbstractRepository
 {
     /**
      * @var TableGatewayInterface
