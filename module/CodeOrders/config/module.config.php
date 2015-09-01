@@ -268,6 +268,9 @@ return array(
         'CodeOrders\\V1\\Rest\\Users\\Controller' => array(
             'input_filter' => 'CodeOrders\\V1\\Rest\\Users\\Validator',
         ),
+        'CodeOrders\\V1\\Rest\\Products\\Controller' => array(
+            'input_filter' => 'CodeOrders\\V1\\Rest\\Products\\Validator',
+        ),
     ),
     'input_filter_specs' => array(
         'CodeOrders\\V1\\Rest\\Ptypes\\Validator' => array(
@@ -340,6 +343,8 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'Document of clients',
+                'error_message' => 'The document field is invalid',
             ),
             2 => array(
                 'name' => 'address',
@@ -361,12 +366,16 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'Address of clients',
+                'error_message' => 'The Address field is invalid',
             ),
             3 => array(
                 'name' => 'zipcode',
                 'required' => true,
                 'filters' => array(),
                 'validators' => array(),
+                'description' => 'Zipcode of clients',
+                'error_message' => 'The zipcode field is invalid',
             ),
             4 => array(
                 'name' => 'city',
@@ -388,12 +397,16 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'City of clients',
+                'error_message' => 'The city field is invalid',
             ),
             5 => array(
                 'name' => 'state',
                 'required' => true,
                 'filters' => array(),
                 'validators' => array(),
+                'description' => 'State of clients',
+                'error_message' => 'The state field is invalid',
             ),
             6 => array(
                 'name' => 'responsible',
@@ -415,6 +428,8 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'Responsible of clients',
+                'error_message' => 'The responsible field is invalid',
             ),
             7 => array(
                 'name' => 'email',
@@ -465,6 +480,8 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'Phone of clients',
+                'error_message' => 'The phone field is invalid',
             ),
             9 => array(
                 'name' => 'obs',
@@ -486,6 +503,8 @@ Name of playment type',
                         ),
                     ),
                 ),
+                'description' => 'Obs of clients',
+                'error_message' => 'The obs... field is invalid',
             ),
         ),
         'CodeOrders\\V1\\Rest\\Users\\Validator' => array(
@@ -563,6 +582,83 @@ Name of playment type',
                 'name' => 'last_name',
                 'description' => 'Last name of users',
                 'error_message' => 'The last name field is invalid',
+            ),
+        ),
+        'CodeOrders\\V1\\Rest\\Products\\Validator' => array(
+            0 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'max' => '60',
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StripTags',
+                        'options' => array(),
+                    ),
+                    1 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'name',
+                'description' => 'Name of products',
+                'error_message' => 'The name field is invalid',
+            ),
+            1 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'max' => '60',
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StripTags',
+                        'options' => array(),
+                    ),
+                    1 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'description',
+                'description' => 'Description of products',
+                'error_message' => 'The description field is invalid',
+            ),
+            2 => array(
+                'required' => true,
+                'validators' => array(
+                    0 => array(
+                        'name' => 'Zend\\Validator\\StringLength',
+                        'options' => array(
+                            'max' => '60',
+                            'min' => '3',
+                        ),
+                    ),
+                ),
+                'filters' => array(
+                    0 => array(
+                        'name' => 'Zend\\Filter\\StripTags',
+                        'options' => array(),
+                    ),
+                    1 => array(
+                        'name' => 'Zend\\Filter\\StringTrim',
+                        'options' => array(),
+                    ),
+                ),
+                'name' => 'price',
+                'description' => 'Price of products',
+                'error_message' => 'The price field is invalid',
             ),
         ),
     ),
