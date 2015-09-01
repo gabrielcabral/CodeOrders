@@ -81,7 +81,7 @@ class AbstractRepository
         return $data;
     }
 
-    // Erro de 415 content-type
+    // Erro 415 content-type
     /**
      * Update
      *
